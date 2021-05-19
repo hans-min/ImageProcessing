@@ -9,16 +9,17 @@ public class ImageProcessing {
 	public static void main(String[] args) {
 		int[][] imageData = imgToTwoD("./img/orca.jpg");  // choose this image of my favorite character, or whatever you want!
 		viewImageData(imageData);
-    	int [][]negative = negativeColor(imageData);
+    		int [][]negative = negativeColor(imageData);  //try your filter here
   		twoDToImage(negative, "./frostnova.jpg"); // this is the new image after filter, you can name it however you like
-		  // int[][] allFilters = stretchHorizontally(shrinkVertically(colorFilter(negativeColor(trimBorders(invertImage(imageData), 20)), 200, 20, 40)));
+		
+		 // int[][] allFilters = stretchHorizontally(shrinkVertically(colorFilter(negativeColor(trimBorders(invertImage(imageData), 20)), 200, 20, 40)));
 
-		// Painting with pixels
+		//Part 2: Painting with pixels
 
 		//int[][] canvas = new int [500][500];
-        //int[] rgba = {255, 255, 0, 255};
-        //int [][]randomImg =generateRectangles(canvas, 1000);
-    	//twoDToImage(randomImg, "./random_img.jpg");
+		//int[] rgba = {255, 255, 0, 255};
+		//int [][]randomImg =generateRectangles(canvas, 1000);
+		//twoDToImage(randomImg, "./random_img.jpg");
 	}
 
 	// Image Processing Methods
@@ -128,6 +129,8 @@ public class ImageProcessing {
 
 
 	// Painting Methods
+	
+	// 1. Take a blank canva and paint each of its pixel with a random color
 	public static int[][] paintRandomImage(int[][] canvas) {
 		Random rand = new Random();
     for (int i = 0; i < canvas.length; i++) {
@@ -142,6 +145,8 @@ public class ImageProcessing {
     }
 		return canvas;
 	}
+	
+	// 2. Paint a monocolor rectangle given it height, width, color and position in the canva
 	public static int[][] paintRectangle(int[][] canvas, int width, int height, int rowPosition, int colPosition, int color) {
 		for (int i = 0; i < canvas.length; i++) {
       if(i>=rowPosition && i<=rowPosition + width) {
@@ -152,6 +157,8 @@ public class ImageProcessing {
     }
 		return canvas;
 	}
+	
+	// 3. Paint Rectangles! ( given the number of rectangles you like to paint )
 	public static int[][] generateRectangles(int[][] canvas, int numRectangles) {
 		Random rand = new Random();
     for (int i = 0; i < numRectangles; i++) {
